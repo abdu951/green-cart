@@ -2,7 +2,9 @@ import React from 'react'
 
 const BottomBanner = () => {
   return (
-    <div>BottomBanner</div>
+    <div className='relative mt-24'>
+      
+    </div>
   )
 }
 
