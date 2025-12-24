@@ -43,7 +43,6 @@ export const AppContextProvider = ({children}) => {
     }
 
     // remove product from cart
-
     const removeFromCart = (itemId) => {
         let cartData = structuredClone(cartitems)
 
