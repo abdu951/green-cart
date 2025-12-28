@@ -60,6 +60,11 @@ const Navbar = () => {
                 
             </div>
 
+
+
+
+            {/* Mobile Menu */}
+
             <div className='flex items-center gap-6 sm:hidden'>
 
                 <div onClick={() => navigate('/cart')} className="relative cursor-pointer">
