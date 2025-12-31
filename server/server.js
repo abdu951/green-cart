@@ -23,7 +23,8 @@ app.get('/', (req, res) => {
     res.send('api is working')    
 })
 
-app.use('/', userRouter);
+app.use('/api/user', userRouter);
+
 
 app.listen(PORT, () => {
     console.log(`server is running on port http://localhost:${PORT}`)
