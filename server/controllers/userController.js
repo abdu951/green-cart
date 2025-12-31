@@ -29,7 +29,7 @@ export const register = async(req, res) => {
             maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days cookie expiration
         })
 
-        return res.json({ success: true, user: { name: user.name, email: user.email} });
+        return res.json({ success: true, user: { name: user.name, email: user.email } });
     
     }catch (error) {
 
