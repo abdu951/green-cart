@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 
 // login a seller: /api/seller/login
 export const sellerLogin = async(req, res) => {
