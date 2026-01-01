@@ -2,6 +2,7 @@ import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+
 // register a new user: /api/user/register
 export const register = async(req, res) => {
     try {
@@ -77,4 +78,56 @@ export const login = async(req, res) => {
         res.send({ success: false, message: error.message });
     }
 }
+
+
         
+/* auth check: /api/user/is-auth
+
+export const isAuth = async(req, res) => {
+    try {
+        const { userId } = req.body;
+        const user = await User.findById(userId).select('-password');
+        return res.json({ success: true, user });
+
+    } catch (error) {
+        console.log(error.message)
+        res.send({ success: false, message: error.message });
+    }
+}*/
+
+// ================= AUTH CHECK =================
+export const isAuth = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select("-password");
+
+        if (!user) {
+            return res.json({success: false, message: "User not found"});
+        }
+
+        return res.json({success: true, user});
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message: error.message});
+    }
+};
+
+
+
+// logout a user: /api/user/logout
+
+export const logout = async(req, res) => {
+    try {
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+        });
+        return res.json({ success: true, message: "logged out successfully"})
+
+    } catch (error) {
+        console.log(error.message)
+        res.send({ success: false, message: error.message });
+    }
+}
+
