@@ -39,7 +39,7 @@ export const register = async(req, res) => {
     }
 }
 
-// login a user: /api/user/login
+// login a user: /api/user/login  
 export const login = async(req, res) => {
     try {
 
@@ -85,7 +85,7 @@ export const login = async(req, res) => {
 
 export const isAuth = async(req, res) => {
     try {
-        const { userId } = req.body;
+        const { userId } = req.body;  // 👈 IMPORTANT
         const user = await User.findById(userId).select('-password');
         return res.json({ success: true, user });
 
@@ -98,7 +98,8 @@ export const isAuth = async(req, res) => {
 // ================= AUTH CHECK =================
 export const isAuth = async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).select("-password");
+        const userId = req.user.id;   // 👈 IMPORTANT
+        const user = await User.findById(userId).select("-password");
 
         if (!user) {
             return res.json({success: false, message: "User not found"});
