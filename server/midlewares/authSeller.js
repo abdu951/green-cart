@@ -40,6 +40,7 @@ const authSeller = (req, res, next) => {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         // Attach seller info to request (industry standard)
+        
         req.seller = { email: decoded.email, role: "seller"};
 
         // Authorization check
