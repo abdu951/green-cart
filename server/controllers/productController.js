@@ -18,7 +18,7 @@ export const ProductById = (req, res) => {
 }
 
 
-// add single product: api/product/add
+// change product in stock: api/product/stock
 export const changeStock = (req, res) => {
 
 }
